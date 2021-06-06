@@ -1,0 +1,30 @@
+logging:
+#  pattern:
+#    console: %d{yyyy-MM-dd HH:mm:ss} - %msg%n
+  level:
+    org.springframework.web: TRACE
+    com.howtodoinjava: DEBUG
+    org.hibernate: ERROR
+  file:
+    name: logs/application-debug.log
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+
+  data:
+    mongodb:
+#      authentication-database: admin
+      uri: mongodb+srv://admin:admin@cluster0.znh2e.mongodb.net/microservices?retryWrites=true&w=majority
+#      uri: mongodb://admin:admin@localhost:27017/microservices?authSource=admin
+
+#      username: admin
+#      password: admin
+#      host: localhost
+#      port: 27017
+#      database: microservices
+
+
+
+

@@ -1,5 +1,7 @@
 package com.cloud.microservicemongo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,9 +11,15 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
     UserRepository service;
+    Logger logger= LoggerFactory.getLogger(UserController.class);
 
     UserController(UserRepository service) {
         this.service = service;
+        logger.debug("Logging debug");
+        logger.error("Logging error");
+        logger.info("Logging info");
+        logger.trace("Logging trace");
+        logger.warn("Logging warning");
     }
 
     @GetMapping

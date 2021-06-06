@@ -13,7 +13,7 @@ public class MicroserviceMongoApplication {
     }
 
     @RequestMapping(value = "/")
-    public String hello() {
+    public String start() {
         return "Microservice up !!!" + '\n' +
                 "http://localhost:8080/users" +
                 "";
