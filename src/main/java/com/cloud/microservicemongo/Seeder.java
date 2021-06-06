@@ -8,15 +8,15 @@ import java.util.List;
 
 @Component
 public class Seeder implements CommandLineRunner {
-    UserRepository repository;
+    private UserRepository repository;
 
-    public Seeder(UserRepository repository) {
+    Seeder(UserRepository repository) {
         this.repository = repository;
     }
 
     static List<User> seed() {
         List<User> list = Arrays.asList(
-                new User("firstName10101", "lastName0", "email0", "password0", Arrays.asList(
+                new User("firstName111", "lastName0", "email0", "password0", Arrays.asList(
                         new Course("CourseName0", 1010l),
                         new Course("CourseName1", 234l),
                         new Course("CourseName2", 345l))),

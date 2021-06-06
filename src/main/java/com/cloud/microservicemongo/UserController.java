@@ -2,71 +2,52 @@ package com.cloud.microservicemongo;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    UserRepository service;
+
+    UserController(UserRepository service) {
+        this.service = service;
+    }
+
     @GetMapping
-    public List<User> getUsers() {
-        return Seeder.seed();
+    public List<User> findAll() {
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable String id) {
-        User user = new User("firstName0", "lastName0", "email0", "password0", Arrays.asList(
-                new Course("CourseName0", 123l),
-                new Course("CourseName1", 234l),
-                new Course("CourseName2", 345l)));
-        user.setId(id);
-        return user;
+    public Optional<User> findById(@PathVariable String id) {
+        return service.findById(id);
     }
 
     @PostMapping
     public User saveUser(@RequestBody User user) {
-        user.setId("id");
-        return user;
+        return service.save(user);
     }
 
-    @PutMapping("/{id}")
-    public User updateUser(@RequestBody User user, @PathVariable String id) {
-        user.setId(id);
-        return user;
+    @PutMapping
+    public User updateUser(@RequestBody User user) {
+        if (service.existsById(user.getId()))
+            return service.save(user);
+        else
+            return null;
     }
 
 
     @DeleteMapping("/{id}")
-    public User deleteUser(@PathVariable String id) {
-        User user = new User();
-        user.setId(id);
-        user.setFirstName("DELETED");
-        return user;
+    public void deleteById(@PathVariable String id) {
+        if (service.existsById(id))
+            service.deleteById(id);
+    }
+
+
+    @DeleteMapping
+    public void deleteUser(@RequestBody User user) {
+        if (service.existsById(user.getId()))
+            service.delete(user);
     }
 }
-
-//    @Autowired
-//    private UserRepository repository;
-//
-//    @PostMapping("/addUser")
-//    public String saveUser(@RequestBody User user) {
-//        repository.save(user);
-//        return "Added user with id : " + user.getId();
-//    }
-//
-//    @GetMapping("/findAllUsers")
-//    public List<User> getUsers() {
-//        return repository.findAll();
-//    }
-//
-//    @GetMapping("/findAllUsers/{id}")
-//    public Optional<User> getUser(@PathVariable int id) {
-//        return repository.findById(id);
-//    }
-//
-//    @DeleteMapping("/delete/{id}")
-//    public String deleteUser(@PathVariable int id) {
-//        repository.deleteById(id);
-//        return "user deleted with id : " + id;
-//    }
-
