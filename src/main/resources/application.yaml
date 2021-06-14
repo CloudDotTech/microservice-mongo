@@ -1,10 +1,18 @@
 logging:
-#  pattern:
-#    console: %d{yyyy-MM-dd HH:mm:ss} - %msg%n
   level:
-    org.springframework.web: TRACE
-    com.howtodoinjava: DEBUG
-    org.hibernate: ERROR
+    root: INFO
+    org:
+      apache:
+        tomcat: ERROR
+        catalina: ERROR
+      springframework:
+        context.support: WARN
+        data: ERROR
+        web: ERROR
+      hibernate: ERROR
+    com:
+      cloud:
+        microservicemongo: TRACE
   file:
     name: logs/application-debug.log
 

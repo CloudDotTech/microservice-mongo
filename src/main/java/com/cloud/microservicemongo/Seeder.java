@@ -1,17 +1,24 @@
 package com.cloud.microservicemongo;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @Component
 public class Seeder implements CommandLineRunner {
     private UserRepository repository;
 
     Seeder(UserRepository repository) {
         this.repository = repository;
+        log.trace("Logging trace");
+        log.warn("Logging warning");
+        log.debug("Logging debug");
+        log.info("Logging info");
+        log.error("Logging error");
     }
 
     static List<User> seed() {
