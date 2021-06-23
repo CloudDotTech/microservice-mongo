@@ -25,14 +25,18 @@ spring:
     mongodb:
 #      authentication-database: admin
       uri: mongodb+srv://admin:admin@cluster0.znh2e.mongodb.net/microservices?retryWrites=true&w=majority
-#      uri: mongodb://admin:admin@localhost:27017/microservices?authSource=admin
+      #      uri: mongodb://admin:admin@localhost:27017/microservices?authSource=admin
 
-#      username: admin
-#      password: admin
-#      host: localhost
-#      port: 27017
-#      database: microservices
+      #      username: admin
+      #      password: admin
+      #      host: localhost
+      #      port: 27017
+      #      database: microservices
 
+    web:
+      pageable:
+        size-parameter: pageSize
+        page-parameter: pageNumber
 
 
 
