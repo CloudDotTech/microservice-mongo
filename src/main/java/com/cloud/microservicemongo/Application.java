@@ -14,8 +14,8 @@ import java.util.stream.IntStream;
 @Slf4j
 @RestController
 @SpringBootApplication
-public class MicroserviceMongoApplication {
-    public MicroserviceMongoApplication() {
+public class Application {
+    public Application() {
         log.trace("Logging trace");
         log.warn("Logging warning");
         log.debug("Logging debug");
@@ -24,7 +24,7 @@ public class MicroserviceMongoApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(MicroserviceMongoApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @RequestMapping(value = "/")
